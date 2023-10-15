@@ -1,0 +1,248 @@
+$main-color: #660066;
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: rgb(255, 255, 255);
+    background-image: url(./assets/images/bg/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+nav.main-logo {
+    background-color: $main-color;
+
+    img.main-logo {
+        width: 120px;
+    }
+
+    @media(max-width: 992px) {
+        img.main-logo {
+            width: 80px;
+        }
+    }
+}
+
+section.main-design {
+    .my-container {
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.283);
+
+        img.perfium-bottle {
+            filter: brightness(1.1) drop-shadow(14px -2px 1px rgba(0, 0, 0, 0.3));
+            width: 350px;
+        }
+
+        .perfum-hover-box {
+            position: relative;
+
+            &:hover .ingerdients,
+            &:hover img.spot-light {
+                opacity: 1;
+                transition: .5s;
+            }
+
+            img.spot-light {
+                right: -265px;
+                top: -180px;
+                opacity: 0;
+            }
+
+            .ingerdients {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                opacity: 0;
+                transition: .5s;
+
+                img {
+                    $increment: 100px;
+
+                    position: absolute;
+                    width: 150px;
+                    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, .5));
+
+                    &:first-of-type {
+                        width: 120px;
+                        left: -70px;
+                    }
+
+                    &:nth-of-type(2) {
+                        top: (calc($increment + 50px));
+                        left: -70px;
+                    }
+
+                    &:nth-of-type(3) {
+                        top: calc($increment + 100px);
+                        left: 320px;
+                    }
+
+                    &:last-of-type {
+                        top: calc($increment + 210px);
+                        left: 320px;
+                    }
+
+                    @media(max-width: 992px) {
+                        width: 100px;
+
+                        &:first-of-type {
+                            left: 10px;
+                            top: 80px;
+                            width: 80px;
+                        }
+
+                        &:nth-of-type(2) {
+                            left: 250px;
+                            top: 100px;
+                            transform: rotate(50deg);
+                        }
+
+                        &:nth-of-type(3) {
+                            left: -30px;
+                            top: 250px;
+                            width: 140px;
+                        }
+
+                        &:last-of-type {
+                            left: 290px;
+                            top: 300px;
+                            width: 100px;
+                        }
+                    }
+                }
+            }
+        }
+
+        p.description {
+            color: white;
+            font-size: 25px;
+            font-weight: normal;
+            width: 50%;
+            text-align: right;
+        }
+
+        @media(max-width: 992px) {
+            p.description {
+                font-size: 20px;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+section.perfumes {
+    .my-container {
+        img {
+            &:hover {
+                filter: brightness(1.1);
+                transition: .5s;
+                margin-top: -5px;
+            }
+        }
+    }
+}
+
+button.btn {
+    font-weight: normal;
+    font-size: 18px;
+
+    &.btn-primary {
+        background-color: $main-color;
+        border-color: $main-color;
+    }
+}
+
+@media(max-width: 992px) {
+    button.btn {
+        font-weight: normal;
+        font-size: 16px;
+
+        &.btn-primary {
+            background-color: $main-color;
+            border-color: $main-color;
+        }
+    }
+}
+
+.perfumes {
+    .my-container {
+        text-align: center;
+        justify-content: center;
+
+        .images {
+            flex-wrap: wrap;
+
+            img {
+                max-width: 250px;
+            }
+        }
+    }
+}
+
+.loader-parent {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    z-index: 999;
+    transition: 1s;
+
+    .loader {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        position: relative;
+        animation: rotate 1s linear infinite
+    }
+
+    .loader::before,
+    .loader::after {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        inset: 0px;
+        border-radius: 50%;
+        border: 5px solid #FFF;
+        animation: prixClipFix 2s linear infinite;
+    }
+
+    .loader::after {
+        inset: 8px;
+        transform: rotate3d(90, 90, 0, 180deg);
+        border-color: $main-color;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
+    @keyframes prixClipFix {
+        0% {
+            clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+        }
+
+        50% {
+            clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+        }
+
+        75%,
+        100% {
+            clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+        }
+    }
+}
